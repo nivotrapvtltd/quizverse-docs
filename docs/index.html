@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuizVerse Documentation — Buyer Setup Guide</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="top-header">
+    <div class="brand-wrapper">
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+      <a href="#intro-overview" class="brand-title">
+        <span>⚡ QuizVerse</span>
+        <span class="version-tag">v2.3.9</span>
+      </a>
+    </div>
+
+    <!-- Live Search -->
+    <div class="search-container">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" class="search-input" id="docSearchInput" placeholder="Search documentation (e.g. Wizard, Installation, Flutter)...">
+    </div>
+
+    <!-- Quick Navigation Links -->
+    <nav class="header-links">
+      <a href="#intro-overview" class="header-link">Introduction</a>
+      <a href="#admin-installation" class="header-link">Installation Wizard</a>
+      <a href="#mobile-flutter-setup" class="header-link">Flutter Setup</a>
+      <a href="#troubleshooting" class="header-link">Troubleshooting</a>
+      <a href="#support" class="btn-primary">Support</a>
+    </nav>
+  </header>
+
+  <!-- Mobile Drawer Backdrop -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+  <!-- Layout Container -->
+  <div class="layout-container">
+    
+    <!-- Left Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <!-- 1. Introduction -->
+      <div class="nav-group">
+        <div class="nav-group-title">1. Introduction</div>
+        <a href="#intro-overview" class="nav-item active"><span class="nav-bullet"></span>Overview</a>
+      </div>
+
+      <!-- 2. Admin Panel -->
+      <div class="nav-group">
+        <div class="nav-group-title">2. Admin Panel</div>
+        <a href="#admin-intro" class="nav-item"><span class="nav-bullet"></span>Introduction</a>
+        <a href="#admin-prerequisites" class="nav-item"><span class="nav-bullet"></span>Prerequisites</a>
+        <a href="#admin-installation" class="nav-item"><span class="nav-bullet"></span>Installation Wizard Flow</a>
+      </div>
+
+      <!-- 3. Mobile App -->
+      <div class="nav-group">
+        <div class="nav-group-title">3. Mobile App</div>
+        <a href="#mobile-overview" class="nav-item"><span class="nav-bullet"></span>Overview</a>
+        <a href="#mobile-flutter-setup" class="nav-item"><span class="nav-bullet"></span>Flutter Setup</a>
+      </div>
+
+      <!-- 4. Troubleshooting -->
+      <div class="nav-group">
+        <div class="nav-group-title">4. Troubleshooting</div>
+        <a href="#troubleshooting" class="nav-item"><span class="nav-bullet"></span>Troubleshooting & FAQ</a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- 1. INTRODUCTION -->
+      <section class="doc-section" id="intro-overview">
+        <div class="hero-banner">
+          <h1>Welcome to QuizVerse Documentation</h1>
+          <p>Complete step-by-step setup documentation for non-technical buyers and developers. Learn how to launch your web Installation Wizard, configure your Laravel 12 Backend, and publish your Flutter Mobile Application effortlessly.</p>
+          <div class="quick-stats">
+            <div class="stat-chip">⚡ Web Installation Wizard GUI Included</div>
+            <div class="stat-chip">⚡ Backend: Laravel 12 (PHP 8.3+)</div>
+            <div class="stat-chip">📱 Mobile: Flutter 3.x</div>
+            <div class="stat-chip">🔥 Auth & Push: Firebase</div>
+          </div>
+        </div>
+
+        <h2>1. Introduction</h2>
+        <p><strong>QuizVerse</strong> is an end-to-end, production-ready Quiz and Learning ecosystem. It consists of two seamlessly integrated applications:</p>
+        <ul>
+          <li><strong>Backend Admin Panel (Laravel 12):</strong> Features an interactive <strong>Web Installation Wizard</strong>, RESTful API endpoints, secure database management, user authorization, question management, coin economy, and real-time app settings.</li>
+          <li><strong>Mobile Application (Flutter 3.x):</strong> Cross-platform iOS and Android app featuring Quiz Zone, Audio Quiz, Daily Quiz, Math Mania, Battle 1v1 Zone, Live Contests, Exam Module, Leaderboards, and AdMob/In-App Purchases.</li>
+        </ul>
+
+        <h3>📁 Item Zip Package Contents</h3>
+        <p>When you extract your purchased QuizVerse archive from Envato Marketplace, you will see the following directory structure:</p>
+        
+        <div class="code-block-container">
+          <div class="code-header">
+            <span class="code-language">Package Directory Tree</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <pre><code>QuizVerse_Package/
+├── admin-panel/           # Laravel 12 Backend API & Web Installer Source Code
+├── quizverse_app/         # Complete Flutter Cross-Platform Mobile Application Source Code
+├── envato/                # Interactive Documentation (index.html, screenshots, guides)
+├── documents/             # Architectural Documentation & PRD Specifications
+└── README.md              # Quick Start Guide</code></pre>
+        </div>
+      </section>
+
+      <!-- 2. ADMIN PANEL -->
+      <section class="doc-section" id="admin-intro">
+        <h2>2. Admin Panel</h2>
+        
+        <h3>Introduction</h3>
+        <p>The QuizVerse Admin Panel is built on <strong>Laravel 12</strong>. It includes a step-by-step <strong>GUI Web Installation Wizard</strong> designed specifically so non-technical buyers can install the application without running terminal commands.</p>
+
+        <div class="callout callout-note">
+          <div class="callout-title">💡 Web Installation Wizard</div>
+          <p>When you visit your domain URL for the first time, QuizVerse automatically opens the graphical <strong>Installation Wizard</strong> at <code>https://your-domain.com/install</code> to guide you through database setup, admin account creation, and Envato license activation.</p>
+        </div>
+      </section>
+
+      <section class="doc-section" id="admin-prerequisites">
+        <h3>Prerequisites</h3>
+        <p>Before installing the Admin Panel on your web hosting (cPanel, DirectAdmin, or VPS), ensure your server satisfies the following requirements:</p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Requirement</th>
+                <th>Required Version</th>
+                <th>Details & Extensions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>PHP Version</strong></td>
+                <td><strong>PHP 8.3.0+</strong></td>
+                <td>Required extensions: <code>pdo_mysql</code>, <code>openssl</code>, <code>mbstring</code>, <code>gd</code>, <code>fileinfo</code>, <code>curl</code>, <code>xml</code>, <code>ctype</code>.</td>
+              </tr>
+              <tr>
+                <td><strong>Database Engine</strong></td>
+                <td>MySQL 8.0+ / MariaDB 10.5+</td>
+                <td>Character Set: <code>utf8mb4_unicode_ci</code> (required for full emoji support).</td>
+              </tr>
+              <tr>
+                <td><strong>Web Server Root</strong></td>
+                <td>Apache 2.4 / Nginx / LiteSpeed</td>
+                <td>Document Root MUST point to the <code>admin-panel/public/</code> directory.</td>
+              </tr>
+              <tr>
+                <td><strong>Folder Permissions</strong></td>
+                <td>Writable (775 or 777)</td>
+                <td>The installer requires write access to <code>storage/</code> and <code>bootstrap/cache/</code>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-important">
+          <div class="callout-title">⚠️ Mandatory PHP 8.3 Notice</div>
+          <p>QuizVerse is powered by <strong>Laravel 12</strong>, which requires a minimum of <strong>PHP 8.3.0</strong>. In cPanel, go to <em>MultiPHP Manager</em> to set your domain PHP version to 8.3 before starting setup.</p>
+        </div>
+      </section>
+
+      <section class="doc-section" id="admin-installation">
+        <h3>Installation</h3>
+        <p>QuizVerse offers two flexible installation paths: the <strong>Web Installation Wizard</strong> (recommended for all buyers) or the <strong>Manual CLI Method</strong> (for developers).</p>
+
+        <h3>⭐ Method 1: Web Installation Wizard Flow (Recommended)</h3>
+        <p>Follow these step-by-step visual screens to set up QuizVerse directly in your web browser:</p>
+
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-body">
+            <div class="step-title">Step 1: Upload Files & Set Web Root</div>
+            <p>Upload the contents of <code>admin-panel/</code> to your server directory (e.g., <code>/public_html/admin/</code>). <br><strong>CRITICAL:</strong> In cPanel Domains / Subdomains manager, set your Document Root to point to <code>admin-panel/public</code>.</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-body">
+            <div class="step-title">Step 2: Server Requirements & Permissions Check</div>
+            <p>Open <code>https://your-domain.com/install</code> in your browser. The wizard automatically checks your server for <strong>PHP 8.3+</strong> and required PHP extensions, as well as write permissions for <code>storage/</code> and <code>bootstrap/cache/</code>.</p>
+            
+            <div class="step-image-container">
+              <img src="assets/admin%20panel/step-1.png" alt="QuizVerse Web Installer Step 1 - Server Requirements & Permissions" class="doc-screenshot">
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-body">
+            <div class="step-title">Step 3: Database Configuration & Auto Migration</div>
+            <p>Enter your cPanel MySQL Database credentials (Database Host, Database Port, Database Name, Username, and Password):</p>
+            
+            <div class="step-image-container">
+              <img src="assets/admin%20panel/step-2.png" alt="QuizVerse Web Installer Step 2 - Database Configuration" class="doc-screenshot">
+            </div>
+
+            <p style="margin-top: 16px;">Click <strong>Test & Setup Database</strong>. The wizard will automatically connect to your database and begin creating all required tables:</p>
+            
+            <div class="step-image-container">
+              <img src="assets/admin%20panel/step-3.png" alt="QuizVerse Web Installer Step 3 - Running Migrations" class="doc-screenshot">
+            </div>
+
+            <p style="margin-top: 16px;">Once table creation completes, the wizard automatically populates default application configurations, system permissions, and initial sample data into your database:</p>
+            
+            <div class="step-image-container">
+              <img src="assets/admin%20panel/step-3a.png" alt="QuizVerse Web Installer Step 3a - Seed Data Migration Completed" class="doc-screenshot">
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <div class="step-body">
+            <div class="step-title">Step 4: Super Admin Account Setup</div>
+            <p>Fill out the Super Admin setup form with your preferred Name, Email Address, and Password. This will become your primary administrator login.</p>
+            
+            <div class="step-image-container">
+              <img src="assets/admin%20panel/step-4.png" alt="QuizVerse Web Installer Step 4 - Super Admin Account Setup" class="doc-screenshot">
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">5</div>
+          <div class="step-body">
+            <div class="step-title">Step 5: Envato License Activation</div>
+            <p>Enter your <strong>Envato Purchase Code</strong> and <strong>Envato Username</strong>. Click <em>Verify & Activate License</em>.</p>
+            
+            <div class="step-image-container">
+              <img src="assets/admin%20panel/step-5.png" alt="QuizVerse Web Installer Step 5 - Envato License Activation" class="doc-screenshot">
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">6</div>
+          <div class="step-body">
+            <div class="step-title">Step 6: Login to Live Admin Panel</div>
+            <p>Click <strong>Launch Admin Panel</strong> to sign in to your live administration interface at <code>https://your-domain.com/admin/login</code>!</p>
+            
+            <div class="step-image-container">
+              <img src="assets/admin%20panel/login.png" alt="QuizVerse Admin Panel Login Interface" class="doc-screenshot">
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">🎉 Congratulations!</div>
+          <p>Your Admin Panel setup is now completed. You can now log in to your Administration Panel and start managing your QuizVerse platform.</p>
+        </div>
+
+        <br>
+        <h3>💻 Method 2: Manual CLI Installation (For Developers)</h3>
+        <p>If you prefer deploying via SSH terminal or command line, execute the following commands:</p>
+
+        <div class="code-block-container">
+          <div class="code-header">
+            <span class="code-language">Bash Terminal</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <pre><code># 1. Install backend dependencies
+composer install --no-dev --optimize-autoloader
+
+# 2. Copy environment file and generate application key
+cp .env.example .env
+php artisan key:generate
+
+# 3. Configure DB credentials in .env then run migrations & seed data
+php artisan migrate --seed
+
+# 4. Create public storage symlink for uploaded images
+php artisan storage:link
+
+# 5. Optimize configuration for production speed
+php artisan optimize</code></pre>
+        </div>
+      </section>
+
+      <!-- 3. MOBILE APP -->
+      <section class="doc-section" id="mobile-overview">
+        <h2>3. Mobile App</h2>
+        
+        <h3>Overview</h3>
+        <p>The QuizVerse mobile application is built using <strong>Flutter 3.x</strong> (Dart 3.x), offering native 60fps performance on both iOS and Android from a single codebase.</p>
+
+        <p>Key app capabilities include:</p>
+        <ul>
+          <li><strong>Quiz Modules:</strong> Quiz Zone (Categories & Levels), Daily Quiz, Audio Quiz, Math Mania, Fun & Learn, Guess the Word, Exam Mode.</li>
+          <li><strong>Battle Zone:</strong> 1v1 Real-Time Battle, Group Battles, and Bot support.</li>
+          <li><strong>Auth Systems:</strong> Email/Password, Google Sign-In, Phone OTP, Apple Sign-In, and Firebase Authentication.</li>
+          <li><strong>Monetization:</strong> Google AdMob (Banner, Interstitial, Rewarded) and In-App Purchases (Coins & VIP Memberships).</li>
+        </ul>
+      </section>
+
+      <section class="doc-section" id="mobile-flutter-setup">
+        <h3>Flutter Setup</h3>
+        <p>Follow these steps to configure, brand, and build your Flutter mobile app:</p>
+
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-body">
+            <div class="step-title">Step 1: Open Project in IDE & Install Dependencies</div>
+            <p>Open <code>quizverse_app/</code> in <strong>Android Studio</strong> or <strong>VS Code</strong>. Run:</p>
+            <div class="code-block-container">
+              <div class="code-header">
+                <span class="code-language">Flutter Terminal</span>
+                <button class="copy-btn">Copy</button>
+              </div>
+              <pre><code>flutter pub get</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-body">
+            <div class="step-title">Step 2: Connect Mobile App to Your Live Admin API</div>
+            <p>Open <code>lib/config/app_config.dart</code> and set <code>defaultBaseUrl</code> to your live backend domain:</p>
+            <div class="code-block-container">
+              <div class="code-header">
+                <span class="code-language">Dart (lib/config/app_config.dart)</span>
+                <button class="copy-btn">Copy</button>
+              </div>
+              <pre><code>class AppConfig {
+  static const String appName = 'QuizVerse';
+  static const String apiVersion = 'v1';
+  
+  // REPLACE WITH YOUR LIVE API URL
+  static const String defaultBaseUrl = 'https://admin.yourdomain.com/api/v1';
+
+  static String baseUrl = defaultBaseUrl;
+}</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-body">
+            <div class="step-title">Step 3: Firebase Integration (Android & iOS)</div>
+            <ol>
+              <li>Go to <a href="https://console.firebase.google.com/" target="_blank">Firebase Console</a> ➔ Create a project named <code>QuizVerse</code>.</li>
+              <li>Add Android App with your package ID ➔ Download <code>google-services.json</code> ➔ Save to <code>quizverse_app/android/app/google-services.json</code>.</li>
+              <li>Add iOS App with your bundle ID ➔ Download <code>GoogleService-Info.plist</code> ➔ Save to <code>quizverse_app/ios/Runner/GoogleService-Info.plist</code>.</li>
+              <li>Enable Authentication providers (Google, Phone, Apple, Email) in Firebase.</li>
+              <li>In Firebase Console ➔ <em>Project Settings ➔ Service Accounts</em>, generate a private key JSON and upload it to your Admin Panel under <em>Settings ➔ Firebase Settings</em> for push notifications.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <div class="step-body">
+            <div class="step-title">Step 4: Package Name & App Branding</div>
+            <p>Run the package rename utility to update your Android & iOS package identifier globally:</p>
+            <div class="code-block-container">
+              <div class="code-header">
+                <span class="code-language">Terminal Command</span>
+                <button class="copy-btn">Copy</button>
+              </div>
+              <pre><code>flutter pub run change_app_package_name:main com.yourcompany.quizverse</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">5</div>
+          <div class="step-body">
+            <div class="step-title">Step 5: Building Release Apps for Publishing</div>
+            <p>Compile production release binaries for Google Play Store and Apple App Store:</p>
+            <div class="code-block-container">
+              <div class="code-header">
+                <span class="code-language">Build Commands</span>
+                <button class="copy-btn">Copy</button>
+              </div>
+              <pre><code># Build Android App Bundle (.aab) for Google Play Store
+flutter build appbundle --release
+
+# Build universal Android APK
+flutter build apk --release
+
+# Build iOS Release App
+flutter build ipa --release</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. TROUBLESHOOTING -->
+      <section class="doc-section" id="troubleshooting">
+        <h2>4. Troubleshooting</h2>
+        <p>Quick solutions to common setup issues encountered during server deployment or app building:</p>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>🔴 500 Internal Server Error after uploading Admin Panel to cPanel?</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <p>1. Ensure your server is running <strong>PHP 8.3 or higher</strong> (check MultiPHP Manager in cPanel).<br>
+            2. Check that folder permissions for <code>storage/</code> and <code>bootstrap/cache/</code> are set to <strong>775 or 777</strong>.<br>
+            3. Ensure your domain Document Root points directly to the <code>admin-panel/public</code> folder.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>🔴 Mobile App shows "Connection Failed" or API CORS Error?</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <p>1. Check <code>lib/config/app_config.dart</code> and verify that <code>defaultBaseUrl</code> uses <code>https://</code> and ends with <code>/api/v1</code>.<br>
+            2. Verify that your server has a valid SSL certificate (HTTPS).<br>
+            3. Test opening <code>https://admin.yourdomain.com/api/v1/languages</code> directly in your browser to confirm API responsiveness.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>🔴 Google Sign-In fails on real Android devices?</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <p>Add your Android app's <strong>SHA-1 and SHA-256 fingerprint keys</strong> (both debug and release keys from Google Play Console) into your Firebase Project Settings, then re-download <code>google-services.json</code> and place it in <code>android/app/</code>.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>🔴 Flutter CocoaPods or iOS Build Error on Mac?</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <p>Inside <code>quizverse_app/ios/</code> directory, run:<br>
+            <code>pod repo update</code><br>
+            <code>pod install</code><br>
+            Then rebuild your iOS app using Xcode.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SUPPORT SECTION -->
+      <section class="doc-section" id="support">
+        <h2>💬 Customer Support</h2>
+        <p>If you encounter any issues not addressed in this guide, our support team is happy to help!</p>
+        
+        <div class="callout callout-note">
+          <div class="callout-title">✉️ Opening a Support Ticket</div>
+          <p>Please include your <strong>Envato Purchase Code</strong>, server PHP version, and exact error screenshots when opening a ticket for prompt resolution.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Interactive JavaScript -->
+  <script src="js/app.js"></script>
+</body>
+</html>
