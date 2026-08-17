@@ -377,6 +377,7 @@ a:hover {
 /* Step Cards & Screenshots */
 .step-card {
   display: flex;
+  align-items: flex-start;
   gap: 18px;
   background: #ffffff;
   border: 1.5px solid var(--border-color);
@@ -384,11 +385,15 @@ a:hover {
   padding: 20px 24px;
   margin-bottom: 20px;
   box-shadow: var(--shadow-sm);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .step-image-container {
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: 14px;
+  margin-bottom: 14px;
   border-radius: 10px;
   overflow: hidden;
   border: 1.5px solid var(--border-color);
@@ -407,7 +412,6 @@ a:hover {
   display: block;
   border-radius: 8px;
   box-sizing: border-box;
-  margin: 0 auto;
 }
 
 .step-number {
@@ -426,6 +430,11 @@ a:hover {
 
 .step-body {
   flex: 1;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .step-title {

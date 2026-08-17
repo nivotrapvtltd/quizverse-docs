@@ -72,9 +72,15 @@
         <a href="#mobile-flutter-setup" class="nav-item"><span class="nav-bullet"></span>Flutter Setup</a>
       </div>
 
-      <!-- 4. Troubleshooting -->
+      <!-- 4. System Update -->
       <div class="nav-group">
-        <div class="nav-group-title">4. Troubleshooting</div>
+        <div class="nav-group-title">4. System Update</div>
+        <a href="#system-update" class="nav-item"><span class="nav-bullet"></span>Automatic Update Guide</a>
+      </div>
+
+      <!-- 5. Troubleshooting -->
+      <div class="nav-group">
+        <div class="nav-group-title">5. Troubleshooting</div>
         <a href="#troubleshooting" class="nav-item"><span class="nav-bullet"></span>Troubleshooting & FAQ</a>
       </div>
     </aside>
@@ -480,7 +486,7 @@ dart run change_app_package_name:main com.yourcompany.quizverse</code></pre>
         <div class="step-card">
           <div class="step-number">8</div>
           <div class="step-body">
-            <div class="step-title">Step 8: Generate Release Keystore &amp; Configure key.properties</div>
+            <div class="step-title">Step 8: Generate Android Release Keystore File</div>
 
             <div class="callout callout-warning">
               <div class="callout-title">⚠️ CRITICAL SECURITY WARNING: KEEP YOUR KEYSTORE SAFE</div>
@@ -489,8 +495,7 @@ dart run change_app_package_name:main com.yourcompany.quizverse</code></pre>
               </p>
             </div>
 
-            <h4 style="margin-top: 14px; margin-bottom: 8px; font-size: 15px; color: #1e1b4b;">A. Generate New Android Keystore File</h4>
-            <p>Run the <code>keytool</code> command in your terminal to generate your production release keystore file at <code>android/app/my-release-key.jks</code>:</p>
+            <p style="margin-top: 12px;">Run the <code>keytool</code> command in your terminal to generate your production release keystore file at <code>android/app/my-release-key.jks</code>:</p>
 
             <div class="code-block-container" style="margin-top: 8px;">
               <div class="code-header">
@@ -503,8 +508,13 @@ keytool -genkey -v -keystore android/app/my-release-key.jks -keyalg RSA -keysize
             <div class="step-image-container">
               <img src="assets/mobile/app%20configuration/my-release-key-location.png" alt="QuizVerse Android Keystore Location (android/app/my-release-key.jks)" class="doc-screenshot">
             </div>
+          </div>
+        </div>
 
-            <h4 style="margin-top: 18px; margin-bottom: 8px; font-size: 15px; color: #1e1b4b;">B. Configure key.properties File</h4>
+        <div class="step-card">
+          <div class="step-number">9</div>
+          <div class="step-body">
+            <div class="step-title">Step 9: Configure key.properties File</div>
             <p>Create a file named <code>key.properties</code> inside the <code>android/</code> directory and populate it with your keystore credentials:</p>
 
             <div class="code-block-container" style="margin-top: 8px;">
@@ -524,9 +534,9 @@ storeFile=my-release-key.jks</code></pre>
         </div>
 
         <div class="step-card">
-          <div class="step-number">9</div>
+          <div class="step-number">10</div>
           <div class="step-body">
-            <div class="step-title">Step 9: Building Production Release Binaries (.aab, .apk, .ipa)</div>
+            <div class="step-title">Step 10: Building Production Release Binaries (.aab, .apk, .ipa)</div>
             <p>Compile production release binaries for Google Play Store (.aab / .apk) and Apple App Store (.ipa):</p>
             <div class="code-block-container" style="margin-top: 8px;">
               <div class="code-header">
@@ -546,9 +556,81 @@ flutter build ipa --release</code></pre>
         </div>
       </section>
 
-      <!-- 4. TROUBLESHOOTING -->
+      <!-- 4. SYSTEM UPDATE -->
+      <section class="doc-section" id="system-update">
+        <h2>4. System Update Guide</h2>
+        <p>QuizVerse features a built-in <strong>Safe System Update Manager</strong> allowing administrators to perform 1-click platform updates directly from the Admin Panel interface without manual file merging or database scripts.</p>
+
+        <div class="callout callout-important" style="background: #fef2f2; border-left-color: #ef4444; border: 1.5px solid #fca5a5; padding: 18px 22px; border-radius: 12px; margin-bottom: 24px;">
+          <div class="callout-title" style="color: #991b1b; font-weight: 800; font-size: 15.5px;">🚨 MANDATORY PRE-UPDATE BACKUP WARNING</div>
+          <p style="color: #7f1d1d; font-size: 14.5px; margin-top: 6px; margin-bottom: 0;">
+            <strong>BEFORE RUNNING ANY PLATFORM UPDATE, TAKING A COMPLETE BACKUP IS MANDATORY!</strong><br>
+            Always export a full backup of your <strong>MySQL Database</strong> and download a zip copy of your <strong>Server Files</strong> prior to applying updates. In the event of server timeouts, hosting provider resource limitations, or custom code overrides, having a backup guarantees you can restore your platform instantly.
+          </p>
+        </div>
+
+        <h3>⚙️ Server Cron Job Requirement</h3>
+        <p>System updates and background task queues rely on the server scheduler. Before initiating an update, ensure that the <strong>Cron Job</strong> is configured and running on your web hosting server (cPanel / VPS / Forge):</p>
+
+        <div class="code-block-container" style="margin-top: 10px;">
+          <div class="code-header">
+            <span class="code-language">cPanel / Server Cron Command (Every Minute: * * * * *)</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <pre><code>* * * * * cd /home/username/public_html/admin-panel &amp;&amp; php artisan schedule:run &gt;&gt; /dev/null 2&gt;&amp;1</code></pre>
+        </div>
+
+        <p style="margin-top: 14px; font-size: 14px; color: #475569;">
+          <em>Note: Replace <code>/home/username/public_html/admin-panel</code> with the absolute file path to your backend directory on your server. Set the frequency to <strong>Every Minute (<code>* * * * *</code>)</strong>.</em>
+        </p>
+
+        <h3 style="margin-top: 32px;">🚀 Step-by-Step Update Process</h3>
+        
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-body">
+            <div class="step-title">Step 1: Backup Database &amp; Files</div>
+            <p>Go to your cPanel ➔ <strong>phpMyAdmin</strong> ➔ Select your QuizVerse database ➔ Click <strong>Export</strong>. Also download a zip copy of your <code>admin-panel</code> directory.</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-body">
+            <div class="step-title">Step 2: Verify Active Cron Job</div>
+            <p>Ensure your server Cron Job is active so background migrations and queue drivers execute smoothly during update deployment.</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-body">
+            <div class="step-title">Step 3: Upload Update Package in Admin Panel</div>
+            <ol>
+              <li>Log in to your QuizVerse Admin Panel as Super Admin.</li>
+              <li>In the left sidebar, navigate to <strong>System Update</strong>.</li>
+              <li>Under <em>Select Update Package (.ZIP File)</em>, click <strong>Choose File</strong> and select your official update file (e.g. <code>update-version-latest.zip</code>).</li>
+              <li>Click <strong>Upload &amp; Apply System Update</strong>.</li>
+            </ol>
+            
+            <div class="step-image-container">
+              <img src="assets/admin%20panel/admin-config/how-to-update-platform.png" alt="QuizVerse Safe System Update Manager Interface" class="doc-screenshot">
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <div class="step-body">
+            <div class="step-title">Step 4: Automatic Update Completion &amp; Cache Clear</div>
+            <p>The update engine automatically extracts the update archive, runs database schema migrations, updates version tags, and clears route &amp; application caches. Once complete, your Admin Panel will display the updated version badge!</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. TROUBLESHOOTING -->
       <section class="doc-section" id="troubleshooting">
-        <h2>4. Troubleshooting</h2>
+        <h2>5. Troubleshooting</h2>
         <p>Quick solutions to common setup issues encountered during server deployment or app building:</p>
 
         <div class="accordion-item">
