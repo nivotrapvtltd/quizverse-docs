@@ -23,7 +23,7 @@
       </button>
       <a href="#intro-overview" class="brand-title">
         <span>⚡ QuizVerse</span>
-        <span class="version-tag">v2.3.9</span>
+        <span class="version-tag">v1.0.3</span>
       </a>
     </div>
 
@@ -102,8 +102,8 @@
           <li><strong>Mobile Application (Flutter 3.x):</strong> Cross-platform iOS and Android app featuring Quiz Zone, Audio Quiz, Daily Quiz, Math Mania, Battle 1v1 Zone, Live Contests, Exam Module, Leaderboards, and AdMob/In-App Purchases.</li>
         </ul>
 
-        <h3>📁 Item Zip Package Contents</h3>
-        <p>When you extract your purchased QuizVerse archive from Envato Marketplace, you will see the following directory structure:</p>
+        <h3>📁 Item Package Contents</h3>
+        <p>When you extract your purchased QuizVerse package, you will see the following directory structure:</p>
         
         <div class="code-block-container">
           <div class="code-header">
@@ -111,11 +111,9 @@
             <button class="copy-btn">Copy</button>
           </div>
           <pre><code>QuizVerse_Package/
-├── admin-panel/           # Laravel 12 Backend API & Web Installer Source Code
-├── quizverse_app/         # Complete Flutter Cross-Platform Mobile Application Source Code
-├── envato/                # Interactive Documentation (index.html, screenshots, guides)
-├── documents/             # Architectural Documentation & PRD Specifications
-└── README.md              # Quick Start Guide</code></pre>
+├── admin-panel-v1.0.3.zip     # Laravel 12 Backend API &amp; Web Installer Zip
+├── quizverse-app-v1.0.3/       # Complete Flutter Cross-Platform Mobile Application Source Code
+└── documentation.zip          # Setup Documentation &amp; User Guides</code></pre>
         </div>
       </section>
 
@@ -319,7 +317,7 @@ php artisan optimize</code></pre>
           <div class="step-number">1</div>
           <div class="step-body">
             <div class="step-title">Step 1: Open Project in IDE & Install Dependencies</div>
-            <p>Open <code>quizverse_app/</code> in <strong>Android Studio</strong> or <strong>VS Code</strong>. Run:</p>
+            <p>Open <code>quizverse-app-v1.0.3/</code> in <strong>Android Studio</strong> or <strong>VS Code</strong>. Run:</p>
             <div class="code-block-container">
               <div class="code-header">
                 <span class="code-language">Flutter Terminal</span>
@@ -350,55 +348,198 @@ php artisan optimize</code></pre>
   static String baseUrl = defaultBaseUrl;
 }</code></pre>
             </div>
+            <div class="step-image-container">
+              <img src="assets/mobile/app%20configuration/app-config.png" alt="QuizVerse Mobile App - App Config API URL setup" class="doc-screenshot">
+            </div>
           </div>
         </div>
 
         <div class="step-card">
           <div class="step-number">3</div>
           <div class="step-body">
-            <div class="step-title">Step 3: Firebase Integration (Android & iOS)</div>
+            <div class="step-title">Step 3: Firebase Integration (Android &amp; iOS)</div>
             <ol>
               <li>Go to <a href="https://console.firebase.google.com/" target="_blank">Firebase Console</a> ➔ Create a project named <code>QuizVerse</code>.</li>
-              <li>Add Android App with your package ID ➔ Download <code>google-services.json</code> ➔ Save to <code>quizverse_app/android/app/google-services.json</code>.</li>
-              <li>Add iOS App with your bundle ID ➔ Download <code>GoogleService-Info.plist</code> ➔ Save to <code>quizverse_app/ios/Runner/GoogleService-Info.plist</code>.</li>
+              <li>Add Android App with your package ID ➔ Download <code>google-services.json</code> ➔ Save to <code>quizverse-app-v1.0.3/android/app/google-services.json</code>.</li>
+              <li>Add iOS App with your bundle ID ➔ Download <code>GoogleService-Info.plist</code> ➔ Save to <code>quizverse-app-v1.0.3/ios/Runner/GoogleService-Info.plist</code>.</li>
               <li>Enable Authentication providers (Google, Phone, Apple, Email) in Firebase.</li>
               <li>In Firebase Console ➔ <em>Project Settings ➔ Service Accounts</em>, generate a private key JSON and upload it to your Admin Panel under <em>Settings ➔ Firebase Settings</em> for push notifications.</li>
             </ol>
+            <div class="step-image-container">
+              <img src="assets/mobile/app%20configuration/mobile-google-service-json-place.png" alt="QuizVerse Mobile App - Firebase google-services.json Placement" class="doc-screenshot">
+            </div>
           </div>
         </div>
 
         <div class="step-card">
           <div class="step-number">4</div>
           <div class="step-body">
-            <div class="step-title">Step 4: Package Name & App Branding</div>
-            <p>Run the package rename utility to update your Android & iOS package identifier globally:</p>
-            <div class="code-block-container">
-              <div class="code-header">
-                <span class="code-language">Terminal Command</span>
-                <button class="copy-btn">Copy</button>
-              </div>
-              <pre><code>flutter pub run change_app_package_name:main com.yourcompany.quizverse</code></pre>
+            <div class="step-title">Step 4: Change App Display Name (Phone Launcher Title)</div>
+            <p>To update the visible app title displayed on smartphone home screens:</p>
+            <ul>
+              <li><strong>Android:</strong> Open <code>android/app/src/main/AndroidManifest.xml</code> and update <code>android:label="QuizVerse"</code> to <code>android:label="Your App Name"</code>.</li>
+            </ul>
+            <div class="step-image-container">
+              <img src="assets/mobile/app%20configuration/change-app-name-android-manifest.png" alt="Change Android App Name in AndroidManifest.xml" class="doc-screenshot">
             </div>
+
+            <ul>
+              <li><strong>iOS:</strong> Open <code>ios/Runner/Info.plist</code> and update both <code>CFBundleDisplayName</code> and <code>CFBundleName</code> string values to <code>Your App Name</code>.</li>
+            </ul>
+            <div class="step-image-container">
+              <img src="assets/mobile/app%20configuration/change-app-name-runner-info.plist.png" alt="Change iOS App Name in Info.plist" class="doc-screenshot">
+            </div>
+
+            <ul>
+              <li><strong>In-App Config:</strong> Open <code>lib/config/app_config.dart</code> and set <code>static const String appName = 'Your App Name';</code>.</li>
+            </ul>
           </div>
         </div>
 
         <div class="step-card">
           <div class="step-number">5</div>
           <div class="step-body">
-            <div class="step-title">Step 5: Building Release Apps for Publishing</div>
-            <p>Compile production release binaries for Google Play Store and Apple App Store:</p>
-            <div class="code-block-container">
+            <div class="step-title">Step 5: Change App Logo &amp; Auto-Generate Launcher Icons (ic_launcher)</div>
+            <p>To update the app launcher icon and in-app brand logos, replace the logo assets at the following project locations:</p>
+            <ul>
+              <li><strong>App Launcher Icon:</strong> Replace <code>assets/images/app_launcher_logo/app_launcher_icon.png</code> with your custom logo (recommended 1024×1024 px PNG format).</li>
+              <li><strong>In-App Dark Theme Logo:</strong> Replace <code>assets/images/app_logos/quizverse_dark.png</code>.</li>
+              <li><strong>In-App Light Theme Logo:</strong> Replace <code>assets/images/app_logos/quizverse_light.png</code>.</li>
+            </ul>
+            <p style="margin-top: 10px;">Run the automated launcher icon generator commands below to update native Android <code>ic_launcher</code> &amp; iOS app icons:</p>
+            
+            <div class="code-block-container" style="margin-top: 10px;">
               <div class="code-header">
-                <span class="code-language">Build Commands</span>
+                <span class="code-language">Terminal Commands (Icon Generator)</span>
                 <button class="copy-btn">Copy</button>
               </div>
-              <pre><code># Build Android App Bundle (.aab) for Google Play Store
+              <pre><code># 1. Add the flutter_launcher_icons package
+flutter pub add --dev flutter_launcher_icons
+
+# 2. Automatically generate native Android &amp; iOS launcher icons (ic_launcher)
+dart run flutter_launcher_icons</code></pre>
+            </div>
+            <div class="step-image-container">
+              <img src="assets/mobile/app%20configuration/app-logo-change.png" alt="QuizVerse Mobile App Logo &amp; Icon Asset Replacement" class="doc-screenshot">
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">6</div>
+          <div class="step-body">
+            <div class="step-title">Step 6: Auto-Generate Android 12+ &amp; iOS Native Splash Screen</div>
+            <p>QuizVerse supports full <strong>Android 12+ Splash Screen API</strong> (generated in <code>android/app/src/main/res/drawable-*/android12splash.png</code>) and iOS native launch screens. To automatically generate and update native splash screen assets across all screen density folders (hdpi, mdpi, xhdpi, xxhdpi, xxxhdpi, and night mode):</p>
+            <ol>
+              <li>Ensure your splash icon asset is placed at <code>assets/images/app_launcher_logo/app_launcher_icon.png</code>.</li>
+              <li>Run the automated native splash generator commands below:</li>
+            </ol>
+            
+            <div class="code-block-container" style="margin-top: 10px;">
+              <div class="code-header">
+                <span class="code-language">Terminal Commands (Splash Screen Generator)</span>
+                <button class="copy-btn">Copy</button>
+              </div>
+              <pre><code># 1. Add the flutter_native_splash package
+flutter pub add --dev flutter_native_splash
+
+# 2. Auto-generate Android 12+ &amp; iOS native splash screens
+dart run flutter_native_splash:create</code></pre>
+            </div>
+            <div class="step-image-container">
+              <img src="assets/mobile/app%20configuration/android12splash.png" alt="QuizVerse Android 12+ Native Splash Screen Asset Locations (res/drawable-*/android12splash.png)" class="doc-screenshot">
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">7</div>
+          <div class="step-body">
+            <div class="step-title">Step 7: Change Package Name / Bundle Identifier</div>
+            <p>Run the commands below to update your Android Package ID &amp; iOS Bundle Identifier globally (e.g. <code>com.yourcompany.quizverse</code>):</p>
+            <div class="code-block-container">
+              <div class="code-header">
+                <span class="code-language">Terminal Commands (Package Rename)</span>
+                <button class="copy-btn">Copy</button>
+              </div>
+              <pre><code># 1. Add the change_app_package_name dev dependency
+flutter pub add --dev change_app_package_name
+
+# 2. Run package rename utility for Android &amp; iOS
+dart run change_app_package_name:main com.yourcompany.quizverse</code></pre>
+            </div>
+
+            <p style="margin-top: 12px;"><strong>Manual Package Rename (Alternative):</strong></p>
+            <ul>
+              <li><strong>Android:</strong> Update <code>applicationId</code> in <code>android/app/build.gradle</code> and <code>namespace</code> in <code>android/app/src/main/AndroidManifest.xml</code>.</li>
+              <li><strong>iOS:</strong> Open <code>ios/Runner.xcworkspace</code> in Xcode ➔ Select <strong>Runner</strong> target ➔ Update <strong>Bundle Identifier</strong> under <em>Signing &amp; Capabilities</em>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">8</div>
+          <div class="step-body">
+            <div class="step-title">Step 8: Generate Release Keystore &amp; Configure key.properties</div>
+
+            <div class="callout callout-warning">
+              <div class="callout-title">⚠️ CRITICAL SECURITY WARNING: KEEP YOUR KEYSTORE SAFE</div>
+              <p style="margin-top: 4px; margin-bottom: 0;">
+                Always keep your created <code>my-release-key.jks</code> keystore file, key passwords, and <code>key.properties</code> safe and backed up in a secure private location (e.g. secure cloud backup or password manager). <strong>If you lose your release keystore file or password, you will NEVER be able to push app updates to Google Play Store</strong>, and you would be forced to publish a completely new app listing.
+              </p>
+            </div>
+
+            <h4 style="margin-top: 14px; margin-bottom: 8px; font-size: 15px; color: #1e1b4b;">A. Generate New Android Keystore File</h4>
+            <p>Run the <code>keytool</code> command in your terminal to generate your production release keystore file at <code>android/app/my-release-key.jks</code>:</p>
+
+            <div class="code-block-container" style="margin-top: 8px;">
+              <div class="code-header">
+                <span class="code-language">Terminal Command (Key Generation)</span>
+                <button class="copy-btn">Copy</button>
+              </div>
+              <pre><code># Generate new release keystore (save to android/app/my-release-key.jks)
+keytool -genkey -v -keystore android/app/my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload</code></pre>
+            </div>
+            <div class="step-image-container">
+              <img src="assets/mobile/app%20configuration/my-release-key-location.png" alt="QuizVerse Android Keystore Location (android/app/my-release-key.jks)" class="doc-screenshot">
+            </div>
+
+            <h4 style="margin-top: 18px; margin-bottom: 8px; font-size: 15px; color: #1e1b4b;">B. Configure key.properties File</h4>
+            <p>Create a file named <code>key.properties</code> inside the <code>android/</code> directory and populate it with your keystore credentials:</p>
+
+            <div class="code-block-container" style="margin-top: 8px;">
+              <div class="code-header">
+                <span class="code-language">Properties (android/key.properties)</span>
+                <button class="copy-btn">Copy</button>
+              </div>
+              <pre><code>storePassword=your_password
+keyPassword=your_password
+keyAlias=your_alias_name
+storeFile=my-release-key.jks</code></pre>
+            </div>
+            <div class="step-image-container">
+              <img src="assets/mobile/app%20configuration/create-key-property-and-set.png" alt="QuizVerse key.properties File Setup in android/key.properties" class="doc-screenshot">
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">9</div>
+          <div class="step-body">
+            <div class="step-title">Step 9: Building Production Release Binaries (.aab, .apk, .ipa)</div>
+            <p>Compile production release binaries for Google Play Store (.aab / .apk) and Apple App Store (.ipa):</p>
+            <div class="code-block-container" style="margin-top: 8px;">
+              <div class="code-header">
+                <span class="code-language">Release Build Commands</span>
+                <button class="copy-btn">Copy</button>
+              </div>
+              <pre><code># Build Android App Bundle (.aab) for Google Play Store submission
 flutter build appbundle --release
 
-# Build universal Android APK
+# Build universal release APK
 flutter build apk --release
 
-# Build iOS Release App
+# Build iOS Release Package (.ipa)
 flutter build ipa --release</code></pre>
             </div>
           </div>
@@ -450,7 +591,7 @@ flutter build ipa --release</code></pre>
             <span class="accordion-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p>Inside <code>quizverse_app/ios/</code> directory, run:<br>
+            <p>Inside <code>quizverse-app-v1.0.3/ios/</code> directory, run:<br>
             <code>pod repo update</code><br>
             <code>pod install</code><br>
             Then rebuild your iOS app using Xcode.</p>
